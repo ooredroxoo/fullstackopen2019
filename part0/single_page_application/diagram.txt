@@ -1,0 +1,22 @@
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+server->browser: responds with html
+
+note over browser:
+browser parser HTML, locate js resource 
+references and make a request.
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
+server->browser: responds with js file.
+
+note over browser
+browser evaluate js script.
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+server->browser: responds with json file with notes text contents.
+
+note over browser
+browser invoke callback when data is received
+redering the notes on the screen.
+end note
