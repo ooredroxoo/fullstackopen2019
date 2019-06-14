@@ -1,0 +1,43 @@
+user->browser: types url in address bar and hits enter
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+server->browser: responds with html
+
+note over browser:
+browser parser HTML, locate js resource 
+references and make a request
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
+server->browser: responds with js file.
+
+note over browser
+browser evaluate js script
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+server->browser: responds with json file with notes text contents.
+
+note over browser
+browser invoke callback when data is received
+redering the notes on the screen
+end note
+
+user->browser: user types new note
+user->browser: user hits enter key or clicks on save
+
+note over browser
+browser preventsDefault envent handling
+browser creates new note object and 
+adds into notes array.
+browser resets text input value
+browser redraw notes list
+browser sends note to the server to be saved.
+end note
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+server->browser: responds with 201 created and a json message
+
+note over browser
+browser logs json response 
+body to console
+end note 
